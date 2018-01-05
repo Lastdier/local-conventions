@@ -1,4 +1,3 @@
-import numpy as np
 import random
 
 
@@ -15,7 +14,7 @@ class Agent(object):
         Agent.alpha = a
 
     def __init__(self):
-        self.Q = np.zeros((1, 2), np.float32)       # 2 actions each agent
+        self.Q = [0., 0.]       # 2 actions each agent
 
     def choose_action(self, seed=None):
         if seed is not None:
@@ -30,11 +29,11 @@ class Agent(object):
         if self.Q[1] < self.Q[0]:
             return 0
 
-    def update(self, your_action, joint_action):
-        self.Q[your_action] = (1 - self.alpha) * self.Q[your_action] + self.alpha * (
-            self.reward[joint_action[0]][joint_action[1]])
+    def update(self, player, joint_action):
+        self.Q[joint_action[player]] = (1 - self.alpha) * self.Q[joint_action[player]] + self.alpha * (
+            self.reward[joint_action[0]][joint_action[1]][player])
 
 
 if __name__ == '__main__':
-    player = Agent()
+    p = Agent()
     pass
