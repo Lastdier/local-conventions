@@ -211,5 +211,5 @@ def gaussian_random_partition_graph(n, s, v, p_in, p_out, seed=None):
 
 
 if __name__ == '__main__':
-    ttt = random_partition_graph([3, 2, 5], 1.5, 0.1)
+    ttt = gaussian_random_partition_graph(100, 10, .5, .5, .1, 1)
     pass
