@@ -14,20 +14,22 @@ class Agent(object):
         Agent.alpha = a
 
     def __init__(self):
-        self.Q = [0., 0.]       # 2 actions each agent
+        self.Q = [0. for _ in range(len(Agent.reward[0]))]       # 2 actions each agent
 
     def choose_action(self, seed=None):
         if seed is not None:
             random.seed(seed)
 
-        if self.Q[1] == self.Q[0]:
-            return random.choice(range(2))
+        max_q = -99999.
+        m = []
+        for i in range(len(self.Q)):
+            if self.Q[i] > max_q:
+                max_q = self.Q[i]
+                m = [i]
+            elif self.Q[i] == max_q:
+                m.append(i)
 
-        if self.Q[1] > self.Q[0]:
-            return 1
-
-        if self.Q[1] < self.Q[0]:
-            return 0
+        return random.choice(m)
 
     def update(self, player, joint_action):
         self.Q[joint_action[player]] = (1 - self.alpha) * self.Q[joint_action[player]] + self.alpha * (

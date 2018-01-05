@@ -9,6 +9,14 @@ COORDINATION_GAME = [
     [(-1, -1), (4, 4)]
 ]
 
+five_COORDINATION_GAME = [
+    [(1, 1), (-1, -1), (-1, -1), (-1, -1), (-1, -1)],
+    [(-1, -1), (1, 1), (-1, -1), (-1, -1), (-1, -1)],
+    [(-1, -1), (-1, -1), (1, 1), (-1, -1), (-1, -1)],
+    [(-1, -1), (-1, -1), (-1, -1), (1, 1), (-1, -1)],
+    [(-1, -1), (-1, -1), (-1, -1), (-1, -1), (1, 1)]
+]
+
 SOCIAL_DILEMMA_GAME = [
     [(-1, -1), (3, 2)],
     [(2, 3), (1, 1)]
@@ -18,7 +26,7 @@ SOCIAL_DILEMMA_GAME = [
 class QLearning(object):
 
     def __init__(self, alpha, graph):
-        agent.Agent.set_reward(COORDINATION_GAME)
+        agent.Agent.set_reward(five_COORDINATION_GAME)
         agent.Agent.set_alpha(alpha)
         self.graph = graph
         self.agent_pool = [agent.Agent() for _ in range(len(self.graph))]
@@ -55,8 +63,14 @@ class QLearning(object):
                 checked.add(p1)
                 checked.add(p2)
 
+    @property
+    def local_convention_conformity(self):
+        for p in g.partition:
+            
+
 
 if __name__ == "__main__":
-    g = random_graph.gaussian_random_partition_graph(100, 10, .7, .5, .1)
+    g = random_graph.gaussian_random_partition_graph(5000, 100, .7, .5, .1)
     e = QLearning(.5, g)
     e.main_loop(500)
+    pass

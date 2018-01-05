@@ -38,6 +38,27 @@ class Graph(object):
     def partition(self):
         return self._partition
 
+    @property
+    def average_degree(self):
+        k = 0.
+        for i in self._nodes:
+            k += len(i)
+
+        return k / len(self._nodes)
+
+    @property
+    def separation_degree(self):
+        inter_groups = 0.
+        total = 0
+        for p in self._partition:
+            for node in p:
+                for neighbour in self._nodes[node]:
+                    total += 1
+                    if neighbour not in p:
+                        inter_groups += 1
+
+        return (total - inter_groups) / total
+
     def complete(self):
         complete_set = set()
 

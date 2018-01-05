@@ -134,7 +134,7 @@ def random_partition_graph(groups, p_in, p_out, seed=None):
     next_group = {}
     start = 0
     group_index = 0
-    for n in groups:
+    for n in groups:    # connect nodes inside a group
         edges = ((u + start, v + start) for u, v in fast_random_graph(n, p_in).edges)
         g.add_edges(edges)
         g.partition.append(set(range(start, start+n)))
@@ -142,6 +142,7 @@ def random_partition_graph(groups, p_in, p_out, seed=None):
         group_index += 1
         start += n
 
+    # connect nodes between groups
     if p_out == 0:
         return g
     if p_out == 1:
@@ -212,4 +213,6 @@ def gaussian_random_partition_graph(n, s, v, p_in, p_out, seed=None):
 
 if __name__ == '__main__':
     ttt = gaussian_random_partition_graph(100, 10, .5, .5, .1, 1)
+    print ttt.separation_degree
+    print ttt.average_degree
     pass
