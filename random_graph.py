@@ -12,7 +12,7 @@ def random_graph(size, p, seed=None):
     :param size:
     :param p:
     :param seed:
-    :return:
+    :return: a random graph data type
 
     Notes
     -----
@@ -51,7 +51,7 @@ def fast_random_graph(size, p, seed=None):
     :param size:
     :param p:
     :param seed:
-    :return:
+    :return: a random graph type
 
     Notes
     -----
@@ -107,10 +107,10 @@ def random_partition_graph(groups, p_in, p_out, seed=None):
     p_out.
 
     :param groups: list of ints, [3, 4, 1] defines sizes of groups
-    :param p_in:
-    :param p_out:
-    :param seed:
-    :return:
+    :param p_in: intra-group connect possibility
+    :param p_out: inter-group connect possibility
+    :param seed: random seed
+    :return: a random graph with partition
 
     Notes
     -----
@@ -182,10 +182,10 @@ def gaussian_random_partition_graph(n, s, v, p_in, p_out, seed=None):
         Mean cluster size
     :param v: float
         Shape parameter. The variance of cluster size distribution is s/v.
-    :param p_in:
-    :param p_out:
+    :param p_in: intra-group connect possibility
+    :param p_out: inter-group connect possibility
     :param seed:
-    :return:
+    :return: a random graph with partition
 
     References
     ----------
