@@ -8,4 +8,4 @@ IJCAI’17 Proceedings of the 26th International Joint Conference on Artificial 
 
 https://www.ijcai.org/proceedings/2017/659
 
-also containing a bp graph generator
+also containing a ER random graph generator
