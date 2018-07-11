@@ -1,4 +1,4 @@
-# homework
+# local-conventions
 My implementation of norm local conventions emergence algorithm
 
 see reference
